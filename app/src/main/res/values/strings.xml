@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Contact App</string>
+    <string name="add_contact_button_text">add contact button</string>
+    <string name="enter_contact_name_text">Enter contact name</string>
+    <string name="enter_contact_phone_number_text">Enter contact phone number</string>
+    <string name="save_contact_button_text">save contact button</string>
 </resources>
