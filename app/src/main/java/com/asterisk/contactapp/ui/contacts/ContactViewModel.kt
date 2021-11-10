@@ -79,8 +79,14 @@ class ContactViewModel @Inject constructor(
         contactsEventChannel.send(ContactsEvent.ShowContactSaveConfirmationMessage(s))
     }
 
-    fun deleteAllContacts() = viewModelScope.launch{
+    fun deleteAllContacts() = viewModelScope.launch {
         contactsEventChannel.send(ContactsEvent.NavigateToDeleteAllContactsScreen)
+    }
+
+    fun onContactFavClick(contact: Contact) = viewModelScope.launch {
+        val currentState = contact.favorite
+        val updatedContact = contact.copy(favorite = !currentState)
+        contactRepository.updateContact(updatedContact)
     }
 
 
@@ -92,7 +98,7 @@ class ContactViewModel @Inject constructor(
         data class NavigateToEditContactScreen(val contact: Contact) : ContactsEvent()
         data class ShowUndoDeletedContactMessage(val contact: Contact) : ContactsEvent()
         data class ShowContactSaveConfirmationMessage(val msg: String) : ContactsEvent()
-        object NavigateToDeleteAllContactsScreen: ContactsEvent()
+        object NavigateToDeleteAllContactsScreen : ContactsEvent()
     }
 
 }

@@ -1,5 +1,7 @@
 package com.asterisk.contactapp.ui.add_edit_contact
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -19,15 +21,19 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
+private const val PICK_PHOTO_CODE = 101
+
 @AndroidEntryPoint
 class AddEditContactFragment : Fragment(R.layout.fragment_add_edit_contact) {
+    private lateinit var binding: FragmentAddEditContactBinding
+
 
     private val viewModel by viewModels<AddEditContactViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentAddEditContactBinding.bind(view)
+        binding = FragmentAddEditContactBinding.bind(view)
 
         binding.apply {
             etContactName.setText(viewModel.contactName)
@@ -50,6 +56,12 @@ class AddEditContactFragment : Fragment(R.layout.fragment_add_edit_contact) {
 
             etContactNumber.addTextChangedListener {
                 viewModel.contactPhone = it.toString()
+            }
+
+            ivContactImage.setOnClickListener {
+                val imagePickerIntent = Intent(Intent.ACTION_GET_CONTENT)
+                imagePickerIntent.type = "image/*"
+                startActivityForResult(imagePickerIntent, PICK_PHOTO_CODE)
             }
 
             fabSaveContact.setOnClickListener {
@@ -80,4 +92,19 @@ class AddEditContactFragment : Fragment(R.layout.fragment_add_edit_contact) {
             }
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_PHOTO_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                val photoUri = data?.data
+                binding.ivContactImage.setImageURI(photoUri)
+                viewModel.contactImage = photoUri.toString()
+            } else {
+                Snackbar.make(requireView(), "Image picker cancelled", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+
 }

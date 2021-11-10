@@ -41,6 +41,14 @@ class ContactAdapter(private val listener: OnItemClickListener) :
                     }
                 }
 
+                ivFavContact.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val contact = getItem(position)
+                        listener.onFavClick(contact)
+                    }
+                }
+
             }
         }
 
@@ -49,8 +57,6 @@ class ContactAdapter(private val listener: OnItemClickListener) :
                 Glide.with(itemView)
                     .load(contact.image)
                     .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .diskCacheStrategy(DiskCacheStrategy.DATA)
                     .error(R.drawable.default_avatar)
                     .into(ivContactImage)
                 tvContactName.text = contact.name
@@ -62,6 +68,7 @@ class ContactAdapter(private val listener: OnItemClickListener) :
 
     interface OnItemClickListener {
         fun onItemClicked(contact: Contact)
+        fun onFavClick(contact: Contact)
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Contact>() {

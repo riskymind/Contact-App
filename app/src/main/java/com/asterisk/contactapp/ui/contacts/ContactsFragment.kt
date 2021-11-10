@@ -163,4 +163,8 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts), ContactAdapter.On
         viewModel.onContactSelected(contact)
     }
 
+    override fun onFavClick(contact: Contact) {
+        viewModel.onContactFavClick(contact)
+    }
+
 }

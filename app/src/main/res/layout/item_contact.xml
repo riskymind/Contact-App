@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:elevation="5dp"
     android:layout_margin="5dp"
-    android:background="@color/teal_200"
+    android:background="@color/primaryLightColor"
     android:padding="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -26,6 +26,7 @@
         android:fontFamily="sans-serif-medium"
         android:textSize="16sp"
         android:typeface="sans"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintStart_toEndOf="@+id/iv_contact_image"
         app:layout_constraintTop_toTopOf="@+id/iv_contact_image"
         tools:text="Kelechi Opara" />
@@ -37,6 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:textSize="14sp"
+        android:textColor="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_contact_image"
         app:layout_constraintTop_toBottomOf="@+id/tv_contact_name"

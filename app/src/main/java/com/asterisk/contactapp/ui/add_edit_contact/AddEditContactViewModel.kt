@@ -64,13 +64,13 @@ class AddEditContactViewModel @Inject constructor(
 
         if (contact != null) {
             //updateContact
-            val updatedContact = contact.copy(name = contactName, phone = contactPhone)
+            val updatedContact =
+                contact.copy(name = contactName, phone = contactPhone, image = contactImage)
             updateContact(updatedContact)
-            //navigate back with result
         } else {
-            val createdContact = Contact(name = contactName, phone = contactPhone)
+            val createdContact =
+                Contact(name = contactName, phone = contactPhone, image = contactImage)
             createContact(createdContact)
-            //navigate back with result
         }
     }
 
