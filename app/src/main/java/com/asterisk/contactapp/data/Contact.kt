@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import java.text.DateFormat
 
+
 @Entity(tableName = "contact_table")
 @Parcelize
 data class Contact(

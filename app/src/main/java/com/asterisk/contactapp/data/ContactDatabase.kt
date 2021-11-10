@@ -3,6 +3,7 @@ package com.asterisk.contactapp.data
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.asterisk.contactapp.di.ApplicationScope
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ abstract class ContactDatabase : RoomDatabase() {
 
     class InitialContactsAdded @Inject constructor(
         private val database: Provider<ContactDatabase>,
-        @ApplicationContext private val applicationScope: CoroutineScope
+        @ApplicationScope private val applicationScope: CoroutineScope
     ) : RoomDatabase.Callback() {
 
         override fun onCreate(db: SupportSQLiteDatabase) {

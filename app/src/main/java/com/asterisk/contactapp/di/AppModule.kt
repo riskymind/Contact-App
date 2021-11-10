@@ -40,8 +40,8 @@ object AppModule {
         ContactRepository(contactDao)
 
     @ApplicationScope
-    @Singleton
     @Provides
+    @Singleton
     fun provideApplicationScope() = CoroutineScope(SupervisorJob())
 
 }

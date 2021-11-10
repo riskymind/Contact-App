@@ -4,4 +4,15 @@
     <string name="enter_contact_name_text">Enter contact name</string>
     <string name="enter_contact_phone_number_text">Enter contact phone number</string>
     <string name="save_contact_button_text">save contact button</string>
+    <string name="search_text">Search</string>
+    <string name="filter_text">Filter</string>
+    <string name="sort_by_name_text">Sort by name</string>
+    <string name="sort_by_date_text">Sort by date</string>
+    <string name="delete_all_contacts_text">Delete all contacts</string>
+    <string name="hide_favourites_text">Hide Favourites</string>
+    <string name="contacts_text">Contacts</string>
+    <string name="confirmation_title">Confirm Deletion</string>
+    <string name="deletion_warning">This will delete all contacts and can\'t be UNDO!!</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="continue_text">Continue</string>
 </resources>

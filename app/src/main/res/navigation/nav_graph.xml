@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/contactsFragment"
         android:name="com.asterisk.contactapp.ui.contacts.ContactsFragment"
-        android:label="fragment_contacts"
-        tools:layout="@layout/fragment_contacts" >
+        android:label="@string/contacts_text"
+        tools:layout="@layout/fragment_contacts">
         <action
             android:id="@+id/action_contactsFragment_to_addEditContactFragment"
             app:destination="@id/addEditContactFragment" />
@@ -17,6 +17,19 @@
     <fragment
         android:id="@+id/addEditContactFragment"
         android:name="com.asterisk.contactapp.ui.add_edit_contact.AddEditContactFragment"
-        android:label="fragment_add_edit_contact"
-        tools:layout="@layout/fragment_add_edit_contact" />
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_edit_contact" >
+        <argument
+            android:name="contact"
+            app:argType="com.asterisk.contactapp.data.Contact"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/deleteAllContactsFragmentDialog"
+        android:name="com.asterisk.contactapp.ui.deleteAllContacts.DeleteAllContactsFragmentDialog"
+        android:label="DeleteAllContactsFragmentDialog" /><action android:id="@+id/action_global_deleteAllContactsFragmentDialog" app:destination="@id/deleteAllContactsFragmentDialog"/>
 </navigation>
